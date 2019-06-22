@@ -1,29 +1,33 @@
 from celery import Celery
 import urllib.request
 import os
+import uuid
 
 # Where the downloaded files will be stored
 BASEDIR="."
 
-# Create the app and set the broker location (RabbitMQ)
-app = Celery('downloaderApp',
-             backend='redis://redis:6379/0',
-             broker='redis://redis:6379/0')
+CELERY_BROKER_URL = os.environ.get(
+    'CELERY_BROKER_URL', 'redis://localhost:6379')
+CELERY_RESULT_BACKEND = os.environ.get(
+    'CELERY_RESULT_BACKEND', 'redis://localhost:6379')
 
-@app.task
-def download(url, filename):
+app = Celery('downloaderApp',
+             backend=CELERY_RESULT_BACKEND,
+             broker=CELERY_BROKER_URL)
+
+@app.task(name='tasks.download')
+def download(url):
     """
     Download a page and save it to the BASEDIR directory
       url: the url to download
-      filename: the filename used to save the url in BASEDIR
     """
     response = urllib.request.urlopen(url)
     data = response.read()
-    with open(BASEDIR+"/"+filename,'wb') as file:
+    with open(BASEDIR+"/"+str(uuid.uuid4().hex),'wb') as file:
         file.write(data)
     file.close()
 
-@app.task
+@app.task(name='tasks.download')
 def list():
     """ Return an array of all downloaded files """
     return os.listdir(BASEDIR)

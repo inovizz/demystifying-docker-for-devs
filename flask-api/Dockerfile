@@ -10,14 +10,14 @@ ENV DEBUG true
 
 COPY requirements.txt requirements.txt
 
+# expose the app port
+EXPOSE 5001
+
 # install requirements
 RUN pip install -r requirements.txt
 
-COPY . /api
 WORKDIR /api
-
-# expose the app port
-EXPOSE 5001
+COPY . /api
 
 # run the app server
 CMD ["gunicorn", "--bind", "0.0.0.0:5001", "--workers", "3", "app:app"]

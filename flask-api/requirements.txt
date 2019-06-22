@@ -1,6 +1,5 @@
-celery==4.2.1
-Flask==1.0.2
-redis==2.10.6
-wheel
-flower
-gunicorn
+celery==4.3.0
+Flask==1.0.3
+redis==3.2.1
+flower==0.9.3
+gunicorn==19.9.0
