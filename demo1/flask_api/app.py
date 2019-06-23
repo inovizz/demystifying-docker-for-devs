@@ -1,14 +1,13 @@
-from flask import Flask
-from flask import url_for
-from flask import request
-from flask import jsonify
-from worker import celery
-import celery.states as states
-from redis import Redis, RedisError
-import os
-import redis
-import socket
 import logging
+import os
+import socket
+
+import celery.states as states
+import redis
+from flask import Flask, jsonify, request, url_for
+from redis import Redis, RedisError
+
+from worker import task_queue
 
 app = Flask(__name__)
 
@@ -18,18 +17,16 @@ rcon = redis.StrictRedis(host="redis", db=0, decode_responses=True)
 def download():
     data = request.get_json()
     url = data.get('url')
-    task = celery.send_task('tasks.download',
+    task = task_queue.send_task('tasks.download',
                             args=[url], kwargs={})
     response = f"<a href='{url_for('check_task', task_id=task.id, external=True)}'>check status of {task.id} </a>"
     return response
 
 @app.route('/check/<task_id>')
 def check_task(task_id):
-    res = celery.AsyncResult(task_id)
-    if res.state == states.PENDING:
+    res = task_queue.AsyncResult(task_id)
+    if res:
         return res.state
-    else:
-        return str(res.result)
 
 @app.route("/")
 def redis_counter():

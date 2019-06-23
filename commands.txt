@@ -1,4 +1,4 @@
-docker build -t flask:service:latest .
+docker build -t flask_service:latest .
 docker run -d -p 4001:5001 --name flask_app flask_service
 
 docker run -d -p 6379:6379 --name redis redis
