@@ -5,7 +5,7 @@
 ```sh
 # clone the repo
 $ cd demo1/flask-api
-$ docker build -t flask:service:latest .
+$ docker build -t flask_service:latest .
 $ docker run -d -p 4001:5001 --name flask_app
 
 #Post this - check the service on localhost:4001
