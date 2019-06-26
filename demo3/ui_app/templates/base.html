@@ -1,0 +1,17 @@
+{% load static %}
+
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="header">
+        <h1><a href="/">Configuration Management</a></h1>
+    </div><!-- header -->
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div><!-- content -->
+</body>
+</html>
