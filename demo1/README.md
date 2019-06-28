@@ -6,7 +6,7 @@
 # clone the repo
 $ cd demo1/flask-api
 $ docker build -t flask_service:latest .
-$ docker run -d -p 4001:5001 --name flask_app
+$ docker run -d -p 4001:5001 --name flask_app flask_service
 
 #Post this - check the service on localhost:4001
 ```
@@ -30,7 +30,7 @@ $ docker run -d -p 4001:5001 --name flask_app --link redis:redis flask_service
 $ docker build -t celery_service .
 $ docker run -d --name celery_app --link redis:redis celery_service
 # Check the API on localhost:4001
-# Hit following end point with POST request and send payload 
+# Hit following end point with POST request and send payload
 # URL - localhost:4001/download
 # payload = {"url": "image_url_to_be_downloaded", "file_name": "file_name"}
 ```
