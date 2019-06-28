@@ -1,0 +1,15 @@
+2019-06-28 08:40:45,682 - app - INFO - Redis Counter has been increased, the cntr value is 1
+2019-06-28 08:40:48,215 - app - INFO - Redis Counter has been increased, the cntr value is 2
+2019-06-28 08:40:48,465 - app - INFO - Redis Counter has been increased, the cntr value is 3
+2019-06-28 08:40:48,753 - app - INFO - Redis Counter has been increased, the cntr value is 4
+2019-06-28 08:40:48,962 - app - INFO - Redis Counter has been increased, the cntr value is 5
+2019-06-28 08:40:49,145 - app - INFO - Redis Counter has been increased, the cntr value is 6
+2019-06-28 08:40:49,347 - app - INFO - Redis Counter has been increased, the cntr value is 7
+2019-06-28 08:42:39,946 - app - INFO - Redis Counter has been increased, the cntr value is 8
+2019-06-28 08:42:40,139 - app - INFO - Redis Counter has been increased, the cntr value is 9
+2019-06-28 08:42:40,274 - app - INFO - Redis Counter has been increased, the cntr value is 10
+2019-06-28 08:45:31,372 - app - INFO - Redis Counter has been increased, the cntr value is 11
+2019-06-28 08:45:32,050 - app - INFO - Redis Counter has been increased, the cntr value is 12
+2019-06-28 08:45:32,623 - app - INFO - Redis Counter has been increased, the cntr value is 13
+2019-06-28 08:45:32,796 - app - INFO - Redis Counter has been increased, the cntr value is 14
+2019-06-28 08:45:32,941 - app - INFO - Redis Counter has been increased, the cntr value is 15

@@ -16,6 +16,10 @@ services:
       dockerfile: Dockerfile
     image: flask_service
     container_name: flask_app
+    environment:
+      - HIGHER_ENV_ENABLED=FALSE
+      - VAULT_ENABLE=FALSE
+    env_file: .env
     depends_on:
       - redis
       - celery_service
@@ -25,7 +29,7 @@ services:
     networks:
       - main
     volumes:
-      - flask_app_volume:/var/local/
+      - ./:/var/local/
     restart: on-failure
 
   celery_service:
@@ -34,17 +38,23 @@ services:
       dockerfile: Dockerfile
     image: celery_service
     volumes:
-      - celery_app_volume:/var/local/
+      - ./:/var/local/
     container_name: celery_app
     depends_on:
       - redis
     hostname: celery
     networks:
       - main
-
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 50M
+        reservations:
+          cpus: '0.25'
+          memory: 25M
 networks:
   main:
-
-volumes:
-  flask_app_volume:
-  celery_app_volume:

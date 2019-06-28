@@ -6,7 +6,7 @@ import uuid
 from celery import Celery
 
 # Where the downloaded files will be stored
-BASEDIR='.'
+BASEDIR=os.environ.get('FILE_PATH', '.')
 
 CELERY_BROKER_URL = os.environ.get(
     'CELERY_BROKER_URL', 'redis://localhost:6379')

@@ -32,5 +32,5 @@ $ docker run -d --name celery_app --link redis:redis celery_service
 # Check the API on localhost:4001
 # Hit following end point with POST request and send payload 
 # URL - localhost:4001/download
-# payload = {"url": "image_url_to_be_downloaded"}
+# payload = {"url": "image_url_to_be_downloaded", "file_name": "file_name"}
 ```
