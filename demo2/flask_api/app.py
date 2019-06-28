@@ -12,16 +12,15 @@ from worker import task_queue
 
 app = Flask(__name__)
 
+############# Added Logging ####################
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-
 handler = RotatingFileHandler(os.path.join(os.environ.get('LOG_BASE_PATH'), 'flask_app.log'), maxBytes=10000)
 handler.setLevel(logging.INFO)
-
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
-
 logger.addHandler(handler)
+################################################
 
 rcon = redis.StrictRedis(host="redis", db=0, decode_responses=True)
 
