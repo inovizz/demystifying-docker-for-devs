@@ -12,6 +12,7 @@
 ## How to run demo
 
 ```sh
+$ docker rm -f $(docker ps -a -q)
 $ cd demo4
 $ docker-compose up -d
 ```
