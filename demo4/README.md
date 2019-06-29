@@ -22,3 +22,6 @@ $ docker-compose up -d
 ```sh
 $ docker-compose -f docker-compose.yml -f docker-compose-prod.yml up -d
 ```
+## Try out deploy key given in Docker-Compose file
+
+Visit this [tutorial](https://docs.docker.com/get-started/part3/) to try out how deploy key is being used.
