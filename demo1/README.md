@@ -1,4 +1,4 @@
-# Demo 1 - Connecting multiple Microservices (using legacy way)
+# Demo 1 - Connecting multiple Microservices
 
 ## Setup Flask API Container
 

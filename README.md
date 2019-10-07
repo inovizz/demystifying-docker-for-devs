@@ -1,6 +1,21 @@
 # PyCon India - Workshop "[Demystifying Docker for Devs](https://in.pycon.org/cfp/workshops-2019/proposals/demystifying-docker-for-devs~e9WPb/)"
 
-Link to slides - [Google Slides](https://docs.google.com/presentation/d/1ZMngiqpNleVcOPmSY9ZfHsp8Iao3BlUlPPnSncIQ3iY/edit?usp=sharing)
+## Pre-requisites of the workshop 
+
+* Install Docker - https://docs.docker.com/install/ (latest version)
+* Install Docker Compose - https://docs.docker.com/compose/install/ (latest version)
+* Post that try running this command from CLI - "docker ps"
+![alt text](https://drive.google.com/file/d/1oahiYEL9uEbp0Y2xNCGMB65mahGG5aEp/view?usp=sharing)
+above command shall return this output and showing that no containers are running right now
+* Though installing Python is not required for the demos but in case if plan to experiment something on the local machine, then please use this link to install Python - https://www.python.org/downloads/ (Python 3.5+)
+* Please bring your laptop to try out things on the fly. However, because of any reason if you are not able to get your laptop. I'll provide detailed documentation for you to try things at home.
+* Install postman or any tool which can help you make API POST calls
+
+## Slides
+
+[Google Slides](https://docs.google.com/presentation/d/1ZMngiqpNleVcOPmSY9ZfHsp8Iao3BlUlPPnSncIQ3iY/edit?usp=sharing)
+
+## Demo Code
 
 Please go through with these links for respective demos covered in slides -
 
@@ -8,7 +23,3 @@ Please go through with these links for respective demos covered in slides -
 * [Demo2](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo2/README.md)
 * [Demo3](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo3/README.md)
 * [Demo4](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo4/README.md)
-
-Note: <br>
-- Please dont forget to rebuild Docker Images for flask_api and taskqueue in demo2, if we dont re-build it, then logging won't work in next demos.
-- To try out how deploy key is being used and how it is enabling us to have replicas of containers, please go through with this [tutorial](https://docs.docker.com/get-started/part3/)
