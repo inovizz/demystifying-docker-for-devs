@@ -4,11 +4,11 @@ Link to slides - [Google Slides](https://docs.google.com/presentation/d/1ZMngiqp
 
 Please go through with these links for respective demos covered in slides -
 
-* Demo0 - [Link](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo0/README.md)
-* Demo1 - [Link](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo1/README.md)
-* Demo2 - [Link](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo2/README.md)
-* Demo3 - [Link](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo3/README.md)
-* Demo4 - [Link](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo4/README.md)
+* [Demo0](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo0/README.md)
+* [Demo1](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo1/README.md)
+* [Demo2](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo2/README.md)
+* [Demo3](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo3/README.md)
+* [Demo4](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo4/README.md)
 
 Note: <br>
 - Please dont forget to rebuild Docker Images for flask_api and taskqueue in demo2, if we dont re-build it, then logging won't work in next demos.
