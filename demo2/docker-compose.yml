@@ -24,3 +24,5 @@ services:
     ports:
       - "4001:5001"
     hostname: app
+
+# reference documentation  - https://docs.docker.com/compose/compose-file/

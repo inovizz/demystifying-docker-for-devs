@@ -21,3 +21,5 @@ COPY . /api
 
 # run the app server
 CMD ["gunicorn", "--bind", "0.0.0.0:5001", "--workers", "3", "app:app"]
+
+# Docker file reference documentation - https://docs.docker.com/engine/reference/builder/

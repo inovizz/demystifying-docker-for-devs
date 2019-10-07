@@ -5,28 +5,28 @@ services:
     container_name: redis
     image: redis:latest
     restart: on-failure
-    networks:
+    networks: # Deine network (defaut is bridge)
       - main
     ports:
       - "6379:6379"
 
   app:
     build:
-      context: ../demo2/flask_api/
-      dockerfile: Dockerfile
+      context: ../demo2/flask_api/ # define build path
+      dockerfile: Dockerfile # name of the dockerfile
     image: flask_service
     container_name: flask_app
-    depends_on:
+    depends_on: # define dependencies among services
       - redis
       - celery_service
     ports:
       - "4001:5001"
-    hostname: app
+    hostname: app # specify hostname
     networks:
       - main
     volumes:
-      - flask_app_volume:/var/local/
-    restart: on-failure
+      - flask_app_volume:/var/local/ # User defined volumes
+    restart: on-failure # restart policy
 
   celery_service:
     build:
@@ -48,3 +48,5 @@ networks:
 volumes:
   flask_app_volume:
   celery_app_volume:
+
+# reference documentation  - https://docs.docker.com/compose/compose-file/

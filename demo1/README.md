@@ -1,6 +1,6 @@
-# Demo 1 - Deploying multiple of Microservices with Docker (using legacy way)
+# Demo 1 - Connecting multiple Microservices (using legacy way)
 
-## Setup Flask API
+## Setup Flask API Container
 
 ```sh
 # clone the repo
@@ -30,6 +30,7 @@ $ docker run -d -p 4001:5001 --name flask_app --link redis:redis flask_service
 ```
 
 ## Link Celery service container w/ Redis Container
+
 ```sh
 # Build Celery Service Image and Run container
 $ cd ../taskqueue
@@ -39,3 +40,12 @@ $ docker run -d --name celery_app --link redis:redis celery_service
 # URL - localhost:4001/download
 # payload = {"url": "image_url_to_be_downloaded", "file_name": "file_name"}
 ```
+
+## Reference for Topics covered till Demo 1
+
+* 
+* 
+* 
+* 
+* 
+* 

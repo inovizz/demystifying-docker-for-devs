@@ -11,5 +11,6 @@ RUN pip install -r requirements.txt
 COPY . /queue
 WORKDIR /queue
 
-
 ENTRYPOINT celery -A tasks worker --loglevel=DEBUG
+
+# Docker file reference documentation - https://docs.docker.com/engine/reference/builder/
