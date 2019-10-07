@@ -1,6 +1,4 @@
-# Demo Code used for HydPy June Meetup
-
-## Topic - Demystifying Docker for Devs
+# PyCon India 2019 - Workshop "Demystifying Docker for Devs"
 
 Link to slides - [Google Slides](https://docs.google.com/presentation/d/1ZMngiqpNleVcOPmSY9ZfHsp8Iao3BlUlPPnSncIQ3iY/edit?usp=sharing)
 
