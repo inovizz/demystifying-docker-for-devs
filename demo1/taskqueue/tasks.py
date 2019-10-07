@@ -6,7 +6,7 @@ import uuid
 from celery import Celery
 
 # Where the downloaded files will be stored
-BASEDIR='.'
+BASEDIR = '.'
 
 CELERY_BROKER_URL = os.environ.get(
     'CELERY_BROKER_URL', 'redis://localhost:6379')
@@ -14,8 +14,9 @@ CELERY_RESULT_BACKEND = os.environ.get(
     'CELERY_RESULT_BACKEND', 'redis://localhost:6379')
 
 queue = Celery('downloaderApp',
-                backend=CELERY_RESULT_BACKEND,
-                broker=CELERY_BROKER_URL)
+               backend=CELERY_RESULT_BACKEND,
+               broker=CELERY_BROKER_URL)
+
 
 @queue.task(name='tasks.download')
 def download(url, file_name):
@@ -26,6 +27,6 @@ def download(url, file_name):
     current_time = str(time.time())
     response = urllib.request.urlopen(url)
     data = response.read()
-    with open(BASEDIR+"/"+file_name+'_'+current_time,'wb') as file:
+    with open(BASEDIR+"/"+file_name+'_'+current_time, 'wb') as file:
         file.write(data)
     file.close()

@@ -15,14 +15,17 @@ app = Flask(__name__)
 ############# Added Logging ####################
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-handler = RotatingFileHandler(os.path.join(os.environ.get('LOG_BASE_PATH'), 'flask_app.log'), maxBytes=10000)
+handler = RotatingFileHandler(os.path.join(os.environ.get(
+    'LOG_BASE_PATH'), 'flask_app.log'), maxBytes=10000)
 handler.setLevel(logging.INFO)
-formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter(
+    '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 ################################################
 
 rcon = redis.StrictRedis(host="redis", db=0, decode_responses=True)
+
 
 @app.route('/download/', methods=['GET', 'POST'])
 def download():
@@ -35,18 +38,22 @@ def download():
     response = f"<a href='{url_for('check_task', task_id=task.id, external=True)}'>check status of {task.id} </a>"
     return response
 
+
 @app.route('/check/<task_id>')
 def check_task(task_id):
     res = task_queue.AsyncResult(task_id)
     if res:
-        logger.info("Current status of task id {} is {}".format(task_id, res.state))
+        logger.info("Current status of task id {} is {}".format(
+            task_id, res.state))
         return res.state
+
 
 @app.route("/")
 def redis_counter():
     try:
         visits = rcon.incr("counter")
-        logger.info("Redis Counter has been increased, the cntr value is {}".format(rcon.get('counter')))
+        logger.info("Redis Counter has been increased, the cntr value is {}".format(
+            rcon.get('counter')))
     except RedisError:
         visits = "<i>cannot connect to Redis, counter disabled</i>"
 
@@ -54,6 +61,7 @@ def redis_counter():
            "<b>Hostname:</b> {hostname}<br/>" \
            "<b>Visits:</b> {visits}"
     return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5001, debug=True)

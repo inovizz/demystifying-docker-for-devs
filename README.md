@@ -4,7 +4,6 @@ Link to slides - [Google Slides](https://docs.google.com/presentation/d/1ZMngiqp
 
 Please go through with these links for respective demos covered in slides -
 
-* [Demo0](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo0/README.md)
 * [Demo1](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo1/README.md)
 * [Demo2](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo2/README.md)
 * [Demo3](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo3/README.md)

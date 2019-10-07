@@ -4,10 +4,10 @@
 
 * docker-compose is changed with more attributes
 * New Attribues are:
-    - deploy
-    - env variables
-    - use of .env file
-    - mapping volume to current dir
+  * deploy
+  * env variables
+  * use of .env file
+  * mapping volume to current dir
 
 ## How to run demo
 
