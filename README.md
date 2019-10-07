@@ -1,4 +1,4 @@
-# PyCon India 2019 - Workshop "Demystifying Docker for Devs"
+# PyCon India - Workshop "[Demystifying Docker for Devs](https://in.pycon.org/cfp/workshops-2019/proposals/demystifying-docker-for-devs~e9WPb/)"
 
 Link to slides - [Google Slides](https://docs.google.com/presentation/d/1ZMngiqpNleVcOPmSY9ZfHsp8Iao3BlUlPPnSncIQ3iY/edit?usp=sharing)
 
