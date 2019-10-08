@@ -19,7 +19,7 @@ Above command shall return this output and showing that no containers are runnin
 
 Please go through with these links for respective demos covered in slides -
 
-* [Demo1](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo1/README.md)
-* [Demo2](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo2/README.md)
-* [Demo3](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo3/README.md)
-* [Demo4](https://github.com/inovizz/demystifying-docker-hydpy/blob/master/demo4/README.md)
+* [Demo1](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/demo1/README.md)
+* [Demo2](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/demo2/README.md)
+* [Demo3](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/demo3/README.md)
+* [Demo4](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/demo4/README.md)
