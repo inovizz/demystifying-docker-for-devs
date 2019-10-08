@@ -1,15 +1,15 @@
 # PyCon India - Workshop "[Demystifying Docker for Devs](https://in.pycon.org/cfp/workshops-2019/proposals/demystifying-docker-for-devs~e9WPb/)"
 
-## Pre-requisites of the workshop 
+## Pre-requisites of the workshop
 
 * Install Docker - https://docs.docker.com/install/ (latest version)
 * Install Docker Compose - https://docs.docker.com/compose/install/ (latest version)
 * Post that try running this command from CLI - "docker ps"
-![alt text](https://drive.google.com/file/d/1oahiYEL9uEbp0Y2xNCGMB65mahGG5aEp/view?usp=sharing)
-above command shall return this output and showing that no containers are running right now
+![alt text]()<br>
+Above command shall return this output and showing that no containers are running right now
 * Though installing Python is not required for the demos but in case if plan to experiment something on the local machine, then please use this link to install Python - https://www.python.org/downloads/ (Python 3.5+)
 * Please bring your laptop to try out things on the fly. However, because of any reason if you are not able to get your laptop. I'll provide detailed documentation for you to try things at home.
-* Install postman or any tool which can help you make API POST calls
+* Install postman or any tool which can help you make POST API calls
 
 ## Slides
 
