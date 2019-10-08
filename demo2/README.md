@@ -10,7 +10,7 @@ Coming to changes we have in this demo from previous one, firstly we have simply
 - Changed Dockerfiles to include LOG and FILE paths
 - Added docker-compose file and define all services
 
-## Now how to run demo?
+## Now how to run demo2?
 
 ```sh
 # first of all remove all previous containers so that there is no conflict w.r.t using same
@@ -26,4 +26,17 @@ $ cd ..
 # now run docker-compose and see how a single command spawns all of your containers and does the 
 # same job for which we were running 4-5 commands in demo1
 $ docker-compose up -d
+# Now follow the same steps to test the microservices as mentioned in Demo1
+# once test is completed, use below command to remove and stop all containers
+$ docker-compose down
 ```
+
+## Reference for Topics covered post Demo 1
+
+- [Docker Commands](https://docs.docker.com/engine/reference/commandline/docker/)
+- [Entrypoint vs CMD](https://www.learnitguide.net/2018/06/dockerfile-cmd-entrypoint-differences.html)
+- [ADD vs COPY](https://nickjanetakis.com/blog/docker-tip-2-the-difference-between-copy-and-add-in-a-dockerile)
+- [Introduction to Docker Compose](https://docs.docker.com/compose/)
+- [Docker file reference](https://docs.docker.com/engine/reference/builder/)
+- [Multistage Docker Builds](https://docs.docker.com/develop/develop-images/multistage-build/)
+- [Docker Images Best Practices](https://www.youtube.com/watch?v=JofsaZ3H1qM)

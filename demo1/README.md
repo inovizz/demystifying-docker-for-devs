@@ -1,4 +1,4 @@
-# Demo 1 - Connecting multiple Microservices
+# Demo 1 - Running multiple Microservices
 
 ## Setup Flask API Container
 
@@ -43,9 +43,8 @@ $ docker run -d --name celery_app --link redis:redis celery_service
 
 ## Reference for Topics covered till Demo 1
 
-* 
-* 
-* 
-* 
-* 
-* 
+* [Container vs VMs](https://www.youtube.com/watch?v=98ZNU1KqJfc)
+* [Docker-Architecture](https://docs.docker.com/engine/docker-overview/)
+* [Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)
+* [Understanding Docker Images](https://docs.docker.com/v17.09/engine/userguide/storagedriver/imagesandcontainers/#images-and-layers)
+* [Docker file reference](https://docs.docker.com/engine/reference/builder/)
