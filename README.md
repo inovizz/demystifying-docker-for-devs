@@ -23,3 +23,4 @@ Please go through with these links for respective demos covered in slides -
 * [Demo2](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/demo2/README.md)
 * [Demo3](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/demo3/README.md)
 * [Demo4](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/demo4/README.md)
+* [Demo5](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/demo5/README.md)
