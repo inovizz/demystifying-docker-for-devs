@@ -9,18 +9,22 @@ $ docker build -t flask_service:latest .
 $ docker run -d -p 4001:5001 --name flask_app flask_service
 # Post this - check the service on localhost:4001
 # The output will show that redis connection is broken and you will see following error message -
-Visits: cannot connect to Redis, counter disabled
-# So in next step lets setup redis container and try and link it with flask_api container
 ```
+[alt text]!(https://github.com/inovizz/demystifying-docker-for-devs/blob/master/woredis%20(1).png)<br>
 
 ## Setup Redis Container
 
 ```sh
+# So in next step lets setup redis container and try and link it with flask_api container
+# so that we can make the redis counter working
 $ docker rm -f $(docker ps -a -q) #remove all existing container
 $ docker pull redis
 # Run the redis container
 $ docker run -d -p 6379:6379 --name redis redis
+# Post this - check the service on localhost:4001
+# It shall return you following output
 ```
+[alt text]!(https://github.com/inovizz/demystifying-docker-for-devs/blob/master/wredis.png)<br>
 
 ## Link Flask API container w/ Redis Container
 
