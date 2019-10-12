@@ -29,4 +29,3 @@ def download(url, file_name):
     data = response.read()
     with open(BASEDIR+"/"+file_name+'_'+current_time, 'wb') as file:
         file.write(data)
-    file.close()
