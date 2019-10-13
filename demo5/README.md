@@ -280,4 +280,4 @@ drwxr-xr-x 3 root root 4096 Oct 11 09:54 ..
 root@arun:/var/lib/docker/volumes/my-volume/_data# cat a.log 
 Fri Oct 11 04:34:08 UTC 2019
 ```
-Oh yes, Volume is still there regardless of container state.  
+Oh yes, my data is intact.Thus, Volumes exists independently of containers.  
