@@ -338,6 +338,3 @@ Docker Inspect: https://docs.docker.com/engine/reference/commandline/inspect/
 OverlayFS Driver: https://docs.docker.com/storage/storagedriver/overlayfs-driver/
 
 Docker Volume: https://docs.docker.com/storage/volumes/
-
-
-```
