@@ -1,8 +1,9 @@
+
 # Demo5
 
 ## Manage data in container
 
-  * Volume
+ * Volume
   * Bind Mounts
   * tmpfs
   
@@ -18,7 +19,6 @@ Digest: sha256:fe301db49df08c384001ed752dff6d52b4305a73a7f608f21528048e8a08b51e
 Status: Downloaded newer image for busybox:latest
 / # 
 ```
-
 **Step 2**: Create some file and append something into it.
 ```sh
 / # touch someinfo.txt
@@ -28,6 +28,7 @@ This might be some useful information.
 ```
 
 **Step 3**: let's see where it is getting stored (Anyways it would be somewhere on the host itself). Therefore, it's time to inspect and i love doing that :) 
+
 ```sh
 arunc@arun:~$ docker inspect --format='{{json .GraphDriver}}' 35a93cb4bfab
 {
@@ -73,7 +74,7 @@ arunc@arun:~$ docker container stop 35a93cb4bfab
 root@arun:~# cat /var/lib/docker/overlay2/8bc94f4c70a6099cb8b3ea798c934ccbaa5a1570dcecab31f917288366319f7b/diff/someinfo.txt 
 This might be some useful information.
 ```
-Okay, so data is still there. what if we remove container? lets do that as well. 
+Okay, so data is still there. what if we remove container ? lets do that as well. 
 
 **Step 6**: Remove Container
 ```sh
@@ -95,7 +96,7 @@ Oops, data is gone. No way, i can't afford to lose my data at any cost.
 
 ### Volume is the saviour.
 
-Alright, it sounds interesting but how to use that?
+Alright, it sounds interesting but how to use that ?
 
 `--v` or `--volume`  flag can be leveraged to use volume.  we also have got `--mount` flag as well. lets discuss it later on.
 
@@ -104,7 +105,6 @@ Alright, it sounds interesting but how to use that?
 arunc@arun:~$ docker container run -itd --name sweet_container -v /var/www/logs busybox sh
 e3a3bcc3817e2a34f7a7daad0e7c761138da003937b2231d847791f92a921b79
 ```
-
 **Step 2**:  Find out where exactly is the volume. Time to inspect again. 
 ```sh
 arunc@arun:~$ docker inspect --format='{{json .Mounts}}' e3a3bcc3817e
@@ -134,7 +134,6 @@ arunc@arun:~$ docker attach e3a3bcc3817e
 /var/www/logs # cat a.txt 
 Some useful information
 ```
-
 **Step 4**: Validate the above information at the source and try creating some file from host as well and see if it appears inside container.
 ```sh
 root@arun# hostname
@@ -189,7 +188,6 @@ The short answer is Yes, it's quite possible. Let's see how:
 arunc@arun:~$ docker volume create my-volume
 my-volume
 ```
-
 **Step 2**: List volumes
 ```sh
 arunc@arun:~$ docker volume ls
@@ -197,7 +195,6 @@ DRIVER              VOLUME NAME
 local               37a2c4c8f33ad23eb6273d14ecad5bf8f8d257c897cae019573df9fc2b5613df
 local               my-volume
 ```
-
 **Step 3**: Inspect a volume
 ```sh
 arunc@arun:~$ docker volume inspect my-volume
@@ -213,7 +210,6 @@ arunc@arun:~$ docker volume inspect my-volume
     }
 ]
 ```
-
 **Step 4**: Start a container with a volume
 ```sh
 arunc@arun:~$ docker container run -itd --name sweet_container -v my-volume:/var/www/logs busybox sh
@@ -235,7 +231,6 @@ arunc@arun:~$ docker inspect --format='{{json .Mounts}}' 9b66dabe77b9
   "Propagation": ""
 }
 ```
-
 **Step 5**: Lets play data data 
 ```sh
 arunc@arun:~$ docker container ls
@@ -253,7 +248,6 @@ arunc@arun:~$ docker attach 9b66dabe77b9
 /var/www/logs # cat a.log 
 Fri Oct 11 04:34:08 UTC 2019
 ```
-
 **Step 6**: Stop and Remove container 
 ```sh
 arunc@arun:~$ docker container stop 9b66dabe77b9
@@ -267,7 +261,6 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 arunc@arun:~$ 
 ```
-
 **Step 7**: Did i just lose my data along with the container? Lets see:
 ```sh
 root@arun:/var/lib/docker/volumes/my-volume/_data# pwd; ls -al
@@ -280,4 +273,71 @@ drwxr-xr-x 3 root root 4096 Oct 11 09:54 ..
 root@arun:/var/lib/docker/volumes/my-volume/_data# cat a.log 
 Fri Oct 11 04:34:08 UTC 2019
 ```
-Oh yes, my data is intact.Thus, Volumes exists independently of containers.  
+Oh yes, my data is intact. Thus, volumes exists independently of containers. 
+
+### Bind mounts are also usefully, Oh really !!
+
+Let's try Binding some mounts to container(s):
+```sh
+arunc@arun:/tmp$ docker container run -itd --name container_01 -v /home/arunc/some_share:/etc/some_app/ busybox sh
+4521cd8cac84f0131c7b0b5443b3e27f68b48426be7d8240b0038a791495568c
+
+arunc@arun:/tmp$ docker attach 4521cd8cac84f0131c7b0b5443b3e27f68b48426be7d8240b0038a791495568c
+/ # cd /etc/some_app/
+
+/etc/some_app # ls -al
+total 12
+drwxrwxr-x    2 1000     1000          4096 Oct 13 06:43 .
+drwxr-xr-x    1 root     root          4096 Oct 13 06:44 ..
+-rw-rw-r--    1 1000     1000            39 Oct 13 06:43 someconfig.cfg
+
+/etc/some_app # touch a.txt
+/etc/some_app # ls -al
+total 12
+drwxrwxr-x    2 1000     1000          4096 Oct 13 06:44 .
+drwxr-xr-x    1 root     root          4096 Oct 13 06:44 ..
+-rw-r--r--    1 root     root             0 Oct 13 06:44 a.txt
+-rw-rw-r--    1 1000     1000            39 Oct 13 06:43 someconfig.cfg
+```
+Can i use the same mount again ? 
+```sh
+arunc@arun:/tmp$ docker container run -itd --name container_02 -v /home/arunc/some_share:/etc/some_app:ro busybox sh
+28f04385deda41b14dd12550ff1bf8b7b1121cdbf0cce660b9d9a2e33f43723d
+
+arunc@arun:/tmp$ docker attach 28f04385deda41b14dd12550ff1bf8b7b1121cdbf0cce660b9d9a2e33f43723d
+
+/ # cd /etc/some_app/
+
+/etc/some_app # touch b.txt
+touch: b.txt: Read-only file system
+
+/etc/some_app # rm b.txt
+rm: can't remove 'b.txt': No such file or directory
+
+/etc/some_app # ls -al
+total 12
+drwxrwxr-x    2 1000     1000          4096 Oct 13 06:44 .
+drwxr-xr-x    1 root     root          4096 Oct 13 06:45 ..
+-rw-r--r--    1 root     root             0 Oct 13 06:44 a.txt
+-rw-rw-r--    1 1000     1000            39 Oct 13 06:43 someconfig.cfg
+
+/etc/some_app # rm a.txt 
+rm: remove 'a.txt'? y
+rm: can't remove 'a.txt': Read-only file system
+
+/etc/some_app # rm someconfig.cfg 
+rm: remove 'someconfig.cfg'? y
+rm: can't remove 'someconfig.cfg': Read-only file system
+```
+
+
+**References** 
+
+Docker Inspect: https://docs.docker.com/engine/reference/commandline/inspect/
+
+OverlayFS Driver: https://docs.docker.com/storage/storagedriver/overlayfs-driver/
+
+Docker Volume: https://docs.docker.com/storage/volumes/
+
+
+```
