@@ -16,10 +16,10 @@ services:
       dockerfile: Dockerfile
     image: flask_service
     container_name: flask_app
-    environment:
+    environment: # environment variables inside the compose file
       - HIGHER_ENV_ENABLED=FALSE
       - VAULT_ENABLE=FALSE
-    env_file: .env
+    env_file: .env # use of .env file
     depends_on:
       - redis
       - celery_service
@@ -28,7 +28,7 @@ services:
     hostname: app
     networks:
       - main
-    volumes:
+    volumes: # bind mount inplace of user defined volumes
       - ./:/var/local/
     restart: on-failure
 
@@ -45,7 +45,7 @@ services:
     hostname: celery
     networks:
       - main
-    deploy:
+    deploy: # docker stack use of deploy key
       replicas: 2
       restart_policy:
         condition: on-failure
