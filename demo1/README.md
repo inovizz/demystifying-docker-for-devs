@@ -21,17 +21,18 @@ $ docker rm -f $(docker ps -a -q) #remove all existing container
 $ docker pull redis
 # Run the redis container
 $ docker run -d -p 6379:6379 --name redis redis
-# Post this - check the service on localhost:4001
-# It shall return you following output
 ```
-![alt text](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/wredis.png)<br>
 
 ## Link Flask API container w/ Redis Container
 
 ```sh
 # Run flask api and link redis container with it
 $ docker run -d -p 4001:5001 --name flask_app --link redis:redis flask_service
+# Post this - check the service on localhost:4001
+# It shall return you following output
 ```
+![alt text](https://github.com/inovizz/demystifying-docker-for-devs/blob/master/wredis.png)<br>
+
 
 ## Link Celery service container w/ Redis Container
 
