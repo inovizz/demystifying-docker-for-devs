@@ -12,3 +12,12 @@ services:
       - backend
   backend:
     image: redis:alpine
+    ports:
+      - "6379:6379"
+  celery:
+    build:
+      context: ./taskqueue/
+      dockerfile: Dockerfile
+    image: inovizz/celery_service
+    depends_on:
+      - backend
