@@ -1,7 +1,0 @@
-version: '3.4'
-
-services:
-  app:
-    environment:
-      - HIGHER_ENV_ENABLED=TRUE
-      - VAULT_ENABLE=TRUE

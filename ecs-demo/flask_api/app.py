@@ -3,16 +3,14 @@ import os
 import socket
 from logging.handlers import RotatingFileHandler
 
-import celery.states as states
 import redis
-from flask import Flask, jsonify, request, url_for
-from redis import Redis, RedisError
+from flask import Flask, request, url_for
+from redis import RedisError
 
 from worker import task_queue
 
 app = Flask(__name__)
 
-############# Added Logging ####################
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 handler = RotatingFileHandler(os.path.join(os.environ.get(

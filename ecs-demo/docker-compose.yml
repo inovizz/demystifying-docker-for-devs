@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    networks: 
+      - main
+    ports:
+      - "6379:6379"
+
+  app:
+    build:
+      context: ./flask_api/ 
+      dockerfile: Dockerfile 
+    image: inovizz/flask_service
+    depends_on:
+      - redis
+      - celery
+    ports:
+      - "5001:5001"
+    networks:
+      - main
+
+  celery:
+    build:
+      context: ./taskqueue/
+      dockerfile: Dockerfile
+    image: inovizz/celery_service
+    depends_on:
+      - redis
+    networks:
+      - main
+
+networks:
+  main:
